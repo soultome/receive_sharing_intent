@@ -7,7 +7,7 @@ public class SwiftReceiveSharingIntentPlugin: NSObject, FlutterPlugin, FlutterSt
     static let kEventsChannelMedia = "receive_sharing_intent/events-media";
     static let kEventsChannelLink = "receive_sharing_intent/events-text";
     
-    private var customSchemePrefix = "ShareMedia";
+    private var customSchemePrefix = "";
     
     private var initialMedia: [SharedMediaFile]? = nil
     private var latestMedia: [SharedMediaFile]? = nil
@@ -60,7 +60,7 @@ public class SwiftReceiveSharingIntentPlugin: NSObject, FlutterPlugin, FlutterSt
         if let url = url, let appDomain = Bundle.main.bundleIdentifier {
             return url.absoluteString.hasPrefix("\(self.customSchemePrefix)-\(appDomain)")
         }
-        return false
+        return true
     }
     
     // This is the function called on app startup with a shared link if the app had been closed already.
